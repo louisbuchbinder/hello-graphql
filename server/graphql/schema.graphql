@@ -12,6 +12,7 @@ type Message {
   id: ID!
   owner: User!
   message: String!
+## TODO: BigInt type is needed
 #  dateCreated: Int!
 #  dateUpdated: Int!
 }
