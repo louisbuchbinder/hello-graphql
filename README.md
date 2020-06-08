@@ -9,12 +9,12 @@ First setup your machine with these prerequsites:
 
 ### Local Startup
 Create the docker-compose stack and allow the app to initialize:
-- Create the stack: `docker-compose up --detach`
+- Create the stack (this will pull/build docker images the first time): `docker-compose up --detach`
 - Wait for mysql to initialize (watch progress here): `docker-compose logs -f mysql`
 - Run the server-mysql integration tests: `docker-compose exec server npm run test-integration`
 
-### GraphIQL
-Load the graphiql page in a browser: `localhost:8000/graphql`
+### GraphiQL
+Load the GraphiQL page in a browser: `localhost:8000/graphql`
 Use this interface to execute sample queries. Note that authorized queries will require the `Authorization` header.
 
 ### Authorization/Authentication
@@ -29,7 +29,8 @@ A successful login query will respond with a `jwt`, which will need to be added 
 - Mysql data is persisted on disk in the `mysql/data` directory
 
 ### Mounting Code
-- To mount local code for development purposes uncomment the volume mount in the `docker-compose.yaml`- then recreate the server with `docker-compose up --force-recreate --detach server`
+- To mount local code for development purposes uncomment the volume mount in the server service in the [docker-compose.yaml](docker-compose.yaml)
+- then recreate the server with `docker-compose up --force-recreate --detach server`
 - your local dir will overwrite the container code dir (including the node_modules) so you will need to re-install the dependencies with `docker-compose exec server npm install`
 - run the unit tests with `docker-compose exec server npm test`
 - and the integration tests with `docker-compose exec server npm test-integration`
