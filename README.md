@@ -10,8 +10,10 @@ First setup your machine with these prerequsites:
 ### Local Startup
 Create the docker-compose stack and allow the app to initialize:
 - Create the stack (this will pull/build docker images the first time): `docker-compose up --detach`
+- The server will bind localhost:8000, so this address and port need to be available
 - Wait for mysql to initialize (watch progress here): `docker-compose logs -f mysql`
 - Run the server-mysql integration tests: `docker-compose exec server npm run test-integration`
+- To stop and destroy the local stack run `docker-compose down`
 
 ### GraphiQL
 Load the GraphiQL page in a browser: `localhost:8000/graphql`
