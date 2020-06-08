@@ -1,0 +1,32 @@
+version: '3.7'
+
+networks:
+  local:
+
+services:
+  server:
+    build: server
+    environment:
+      - PORT=8000
+    ports:
+      - '8000:8000'
+    networks:
+      local:
+# Uncomment for development
+#    command: ["tail", "-f", "/dev/null"]
+#    volumes:
+#      - ./server:/app
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./mysql/mysqld.cnf:/etc/mysql/conf.d/mysqld.cnf
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      local:
+        aliases:
+          - mysql.local
+    

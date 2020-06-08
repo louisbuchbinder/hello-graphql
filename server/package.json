@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "lint": "",
+    "test": "npm run test-unit",
+    "test-integration": "mocha --recursive tests/integration",
+    "test-unit": "mocha --recursive tests/unit"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "express": "~4.17.1",
+    "express-graphql": "0.9.0",
+    "graphql": "~15.0.0",
+    "jose": "^1.27.1",
+    "mysql": "~2.18.1",
+    "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "mocha": "^7.2.0",
+    "supertest": "^4.0.2"
+  }
+}

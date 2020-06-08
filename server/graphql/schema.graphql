@@ -1,0 +1,33 @@
+type Session {
+  jwt: String
+}
+
+type User {
+  id: ID!
+  email: String
+  phone: String
+}
+
+type Message {
+  id: ID!
+  owner: User!
+  message: String!
+#  dateCreated: Int!
+#  dateUpdated: Int!
+}
+
+type Query {
+  getUser(id: ID!): User
+  getMessage(id: ID!): Message
+  getMessages(id: ID!): [Message]
+}
+
+type Mutation {
+  login(phone: String, email: String, password: String): Session
+  logout(id: ID!): Boolean!
+  postMessage(message: String!): Message
+  deleteMessage(id: ID!): Boolean!
+  createUser(phone: String, email: String, password: String!): User
+  deleteUser(id: ID!): Boolean!
+}
+

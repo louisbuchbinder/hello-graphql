@@ -1,0 +1,83 @@
+mutation login($email: String, $phone: String, $password: String!) {
+  login(email: $email, phone: $phone, password: $password) {
+    jwt
+  }
+}
+
+mutation logout($id: ID!) {
+  logout(id: $id)
+}
+
+mutation createUser($email: String, $phone: String, $password: String!) {
+  createUser(email: $email, phone: $phone, password: $password) {
+    id
+    email
+    phone
+  }
+}
+
+mutation createUserAndLogin($email: String, $phone: String, $password: String!) {
+  createUser(email: $email, phone: $phone, password: $password) {
+    id
+    email
+    phone
+  }
+  login(email: $email, phone: $phone, password: $password) {
+    jwt
+  }
+}
+
+mutation deleteUser($id: ID!) {
+  deleteUser(id: $id)
+}
+
+mutation postMessage($message: String!) {
+  postMessage(message: $message) {
+    id
+    owner {
+      id
+      email
+      phone
+    }
+    message
+    #dateCreated
+    #dateUpdated
+  }
+}
+
+query getUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    email
+    phone
+  }
+}
+
+query getMessage($id: ID!) {
+  getMessage(id: $id) {
+    id
+    owner {
+      id
+      email
+      phone
+    }
+    message
+    #dateCreated
+    #dateUpdated
+  }
+}
+
+query getMessages($id: ID!) {
+  getMessages(id: $id) {
+    id
+    owner {
+      id
+      email
+      phone
+    }
+    message
+    #dateCreated
+    #dateUpdated
+  }
+}
+
