@@ -12,7 +12,7 @@ services:
       - '8000:8000'
     networks:
       local:
-# Uncomment for development
+## Uncomment for development
 #    command: ["tail", "-f", "/dev/null"]
 #    volumes:
 #      - ./server:/app
